@@ -1,0 +1,14 @@
+# .gitignore
+
+# Ignore Docker volume data (PostgreSQL data)
+postgres_data/
+
+# Ignore Go module files if you want to regenerate them
+/go.sum
+/go.mod
+
+# Ignore other system or editor files
+.DS_Store
+.idea/
+.vscode/
+
