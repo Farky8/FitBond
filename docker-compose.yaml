@@ -1,34 +1,21 @@
-# docker-compose.yml
-
-version: "3.9"
 
 services:
-  # Go application service
-  go-app:
-    build: .
+  frontend:
+    build: ./frontEnd
     ports:
-      - "8080:8080"
-    depends_on:
-      - db
+      - 8081:8081
+  backend:
+    build: ./backEnd
+    ports:
+      - 8080:8080
     environment:
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_USER=postgres
-      - DB_PASSWORD=mysecretpassword
-      - DB_NAME=mydatabase
-
-  # PostgreSQL service
-  db:
-    image: postgres:13
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=mysecretpassword
-      - POSTGRES_DB=mydatabase
+      - DB_URL=postgres://database/events
+  database:
+    image: postgres
+    ports:
+      - 5432:5432
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+      - events:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
-
+  events:
