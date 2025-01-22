@@ -3,7 +3,6 @@ package storage
 import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	//"gorm.io/gorm/logger"
 	"log"
 	"os"
 )
@@ -22,14 +21,12 @@ type Trainings struct {
 }
 
 func DBSetUp() *Trainings {
-    dsn := os.Getenv("DB_DSN")
-    if dsn == "" {
+    url := os.Getenv("DB_URL")
+    if url == "" {
 	log.Fatalf("DB_DSN environment variable is not set")
     }
 
-    db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
-    //Logger: logger.Default.LogMode(logger.Info),
-})
+    db, err := gorm.Open(postgres.Open(url), &gorm.Config{})
     if err != nil {
 	log.Fatalf("Failed to connect to database: %v", err)
     }
