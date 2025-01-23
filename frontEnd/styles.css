@@ -1,0 +1,94 @@
+
+body {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
+    font-size: 32px;
+    background-color: #333333;
+}
+
+body[id="Homepage"] {
+    display: flex;
+}
+
+body[id="creation"] {
+    text-align: center;
+}
+
+.center-content {
+    text-align: center;
+    color: #e5f4f4;
+}
+
+.center-button {
+    padding: 40px 80px;
+    margin: auto 10px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
+
+    border-color: #36b2c3;
+    border-radius: 20%;
+    border-width: 20px;
+
+    background-color: #e5f4f4;
+    color: #333333;
+
+}
+
+h1 {
+    color: #e5f4f4;
+}
+
+fieldset {
+    max-width: 100px;
+    margin: auto auto;
+    border: 2px solid #36b2c3;
+    border-width: 15px;
+    border-radius: 20px;
+}
+
+input[id="heading"] {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    text-align: center;
+    font-size: 50px;
+    background-color: #e5f4f4;
+}
+
+textarea[id="about"] {
+    display: block;
+    width: 600px;
+    font-size: 15px;
+    height: 80px;
+    margin: 20px auto;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    background-color: #e5f4f4;
+
+}
+
+input[id="capacity"], input[id="price"] {
+    display: inline-block;
+    margin: 20px 60px;
+    width: 80px;
+    height: 50px;
+}
+
+button[id="submit"] {
+    display: block;
+    padding: 10px 20px;
+    margin: 20px auto;
+    font-size: 40px;
+
+    border-color: #36b2c3;
+    border-radius: 10px;
+    border-width: 10px;
+
+    background-color: #e5f4f4;
+    color: #333333;
+    
+}
