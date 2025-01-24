@@ -1,4 +1,4 @@
-module TrainMe
+module github.com/Farky8/FitBond
 
 go 1.23.2
 

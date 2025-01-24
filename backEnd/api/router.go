@@ -4,7 +4,7 @@ import (
     "net/http"
 
     "github.com/urfave/neroni"
-    "github.com/Farky8/TrainMe/internal/api/storage"
+    "github.com/Farky8/FitBond/backEnd/api/storage"
 )
 
 func SetRouter(ts *storage.Trainings) http.Handler {
