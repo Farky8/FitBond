@@ -3,8 +3,8 @@ function makeJson(requestdata) {
     const requestObj = {
         "heading": requestdata.get('heading'),
         "about": requestdata.get('about'),
-        "capacity": requestdata.get('capacity'),
-        "price": requestdata.get('price')
+        "capacity": Number(requestdata.get('capacity')),
+        "price": Number(requestdata.get('price'))
     }
 
     const requestJson = JSON.stringify(requestObj);
@@ -12,7 +12,7 @@ function makeJson(requestdata) {
 }
 
 async function sendJson(requestJson) {
-    const apiUrl = ".../home/create" // TODOO after gcp
+    const apiUrl = "http://localhost:8080/home/create" // TODOO after gcp
     try {
         const response = await fetch(apiUrl, {
             method: "POST",
@@ -24,7 +24,7 @@ async function sendJson(requestJson) {
         if (response.status === 201) {
             return 'Training successfully POSTED!';
         } else {
-            return 'Invalid data given.';
+            return response.text();
         }
     } catch {
         return 'Could not reach the server, try again later.'
@@ -34,11 +34,13 @@ async function sendJson(requestJson) {
 
 const form = document.querySelector('#create-info')
 
-form.onsubmit('submit', event => {
+form.addEventListener('submit', event => {
     event.preventDefault();  // the page will not refresh and redirect
     const requestdata = new FormData(event.target);
 
     const requestJson = makeJson(requestdata);
 
-    alert(sendJson(requestJson));
+    sendJson(requestJson)
+	.then( msg => alert(msg) )
+	.catch( msg => alert(msg) )
 })

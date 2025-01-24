@@ -16,4 +16,4 @@ EXPOSE 8080
 #RUN go build -o app .
 #CMD ["./app"]
 
-CMD ["go", "run", "."]
+CMD ["go", "run", "./cmd/main/main.go"]

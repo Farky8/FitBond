@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-    //var trainings *storage.Trainings = storage.DBSetUp()
     var trainings *gorm.DB = storage.DBSetUp()
     
     var router http.Handler = api.SetRouter(&handlers.Trainings{

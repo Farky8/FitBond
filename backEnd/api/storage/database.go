@@ -1,6 +1,7 @@
 package storage
 
 import (
+	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
@@ -8,21 +9,28 @@ import (
 )
 
 type EventInfo struct {
-    ID	     string	`gorm:"primaryKey" json:"id,omitempty"`
+    ID	     int	`gorm:"primaryKey" json:"id"`
     Heading  string	`json:"heading"`
-    About     string	`json:"about"`
-    Applied  int	`json:"applied,omitempty"`
+    About    string	`json:"about"`
+    Applied  int	`json:"applied"`
     Capacity int	`json:"capacity"`
     Price    int	`json:"price"`
 }
 
 func DBSetUp() *gorm.DB {
-    url := os.Getenv("DB_URL")
-    if url == "" {
-	log.Fatalf("DB_DSN environment variable is not set")
+    host := os.Getenv("DB_HOST")
+    port := os.Getenv("DB_PORT")
+    user:= os.Getenv("DB_USER")
+    password := os.Getenv("DB_PASSWORD")
+    dbname := os.Getenv("DB_NAME")
+
+    if host == "" || port == "" || user == "" || password == "" || dbname == "" {
+        log.Fatal("missing required environment variables")
     }
 
-    db, err := gorm.Open(postgres.Open(url), &gorm.Config{})
+    dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+
+    db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
     if err != nil {
 	log.Fatalf("Failed to connect to database: %v", err)
     }
