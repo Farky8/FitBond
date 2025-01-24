@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
-  title: TrainMe API
-  description: API for TrainMe app
+  title: Fit-Bond API
+  description: API for Fit-Bond web.
   version: 1.0.0
 servers:
   - url: http://localhost:8080
@@ -13,24 +13,25 @@ paths:
       requestBody:
         required: true
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
               type: object
               properties:
                 heading:
                   type: string
                   description: "Training name"
-                text:
+                about:
                   type: string
                   description: "Training description"
-                applied:
-                  type: integer
-                  description: "How many people have already applied to this training"
                 capacity:
                   type: integer
+                  minimum: 1
+                  maximum: 100
                   description: "The maximum capacity?"
                 price:
                   type: integer
+                  minimum: 0
+                  maximum: 1000
                   description: "The price of the training"
       responses:
         '201':
