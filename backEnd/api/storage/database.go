@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"os"
+	"github.com/joho/godotenv"
 )
 
 type EventInfo struct {
@@ -18,17 +19,20 @@ type EventInfo struct {
 }
 
 func DBSetUp() *gorm.DB {
-    host := os.Getenv("DB_HOST")
-    port := os.Getenv("DB_PORT")
+    if err := godotenv.Load(); err != nil {
+	log.Fatalf("Error loading .env file: %v", err)
+    }
+
     user:= os.Getenv("DB_USER")
     password := os.Getenv("DB_PASSWORD")
     dbname := os.Getenv("DB_NAME")
+    connName := os.Getenv("DB_CONN_NAME")
 
-    if host == "" || port == "" || user == "" || password == "" || dbname == "" {
+    if connName == "" || user == "" || password == "" || dbname == "" {
         log.Fatal("missing required environment variables")
     }
 
-    dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+    dsn := fmt.Sprintf("host=/cloudsql/%s user=%s password=%s dbname=%s sslmode=disable", connName, user, password, dbname)
 
     db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
     if err != nil {

@@ -12,3 +12,4 @@ postgres_data/
 .idea/
 .vscode/
 
+/backEnd/.env
