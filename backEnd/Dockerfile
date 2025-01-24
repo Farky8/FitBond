@@ -1,9 +1,7 @@
 
-FROM golang
+FROM golang AS build
 
-RUN mkdir -p /home/backEnd
-
-WORKDIR /home/backEnd
+WORKDIR /app
 
 COPY go.mod go.sum ./
 
@@ -11,9 +9,14 @@ RUN go mod download
 
 COPY . .
 
+RUN go build -o api ./cmd/main/main.go
+
+FROM alpine:latest
+
+WORKDIR /root/
+
+COPY --from=build /app/api .
+
 EXPOSE 8080
 
-#RUN go build -o app .
-#CMD ["./app"]
-
-CMD ["go", "run", "./cmd/main/main.go"]
+CMD ["./api"]
