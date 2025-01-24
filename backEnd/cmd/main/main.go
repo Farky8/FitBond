@@ -3,7 +3,7 @@ package main
 import (
     "net/http"
 
-    "github.com/Farky8/TrainMe/internal/api/storage"
+    "github.com/Farky8/FitBond/backEnd/api/storage"
 )
 
 func main() {

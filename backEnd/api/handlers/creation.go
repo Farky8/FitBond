@@ -7,3 +7,4 @@ import (
 )
 
 func (ts *storage.Trainings) HandlePostTraining(w http.ResponseWriter, r *http.Request) {
+}

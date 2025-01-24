@@ -3,7 +3,7 @@ package api
 import (
     "net/http"
 
-    "github.com/urfave/neroni"
+    "github.com/urfave/negroni"
     "github.com/Farky8/FitBond/backEnd/api/storage"
 )
 
