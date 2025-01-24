@@ -4,10 +4,10 @@ import (
     "net/http"
 
     "github.com/urfave/negroni"
-    "github.com/Farky8/FitBond/backEnd/api/storage"
+    "github.com/Farky8/FitBond/backEnd/api/handlers"
 )
 
-func SetRouter(ts *storage.Trainings) http.Handler {
+func SetRouter(ts *handlers.Trainings) http.Handler {
     router := http.NewServeMux()
     router.HandleFunc("POST /home/create", func(w http.ResponseWriter, r *http.Request) { ts.HandlePostTraining(w, r) })
     //router.HandleFunc("GET /home/search", func(w http.ResponseWriter, r *http.Request) { ts.HandleSearchTraining(w, r) })

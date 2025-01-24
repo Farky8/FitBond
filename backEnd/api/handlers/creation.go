@@ -2,11 +2,13 @@ package handlers
 
 import (
     "net/http"
+    "encoding/json"
+    "fmt"
 
     "github.com/Farky8/FitBond/backEnd/api/storage"
 )
 
-func (ts *storage.Trainings) HandlePostTraining(w http.ResponseWriter, r *http.Request) {
+func (ts *Trainings) HandlePostTraining(w http.ResponseWriter, r *http.Request) {
 
     var newEvent storage.EventInfo
     decode := json.NewDecoder(r.Body)
