@@ -1,23 +1,21 @@
 package storage
 
 import (
+	"github.com/Farky8/FitBond/backEnd/api/handlers"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
 	"os"
 )
 
-type TrainInfo struct {
+type EventInfo struct {
     ID	     string	`gorm:"primaryKey" json:"id,omitempty"`
     Heading  string	`json:"heading"`
-    Body     string	`json:"body"`
-    Applied  int	`json:"applied"`
+    About     string	`json:"about"`
+    Applied  int	`json:"applied, omitempty"`
     Capacity int	`json:"capacity"`
     Price    int	`json:"price"`
-}
-
-type Trainings struct {
-    DB *gorm.DB
 }
 
 func DBSetUp() *Trainings {
@@ -35,7 +33,7 @@ func DBSetUp() *Trainings {
 	log.Fatalf("Failed to migrate database: %v", err)
     }
 
-    return &Trainings{
+    return &handlers.Trainings{  // wrap for endpoint handling
 	DB: db,
     }
 }
