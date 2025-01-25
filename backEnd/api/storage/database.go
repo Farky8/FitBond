@@ -27,12 +27,13 @@ func DBSetUp() *gorm.DB {
     password := os.Getenv("DB_PASSWORD")
     dbname := os.Getenv("DB_NAME")
     host := os.Getenv("DB_HOST")
+    port := os.Getenv("DB_PORT")
 
-    if host == "" || user == "" || password == "" || dbname == "" {
+    if host == "" || port == "" || user == "" || password == "" || dbname == "" {
         log.Fatal("missing required environment variables")
     }
 
-    dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", host, user, password, dbname)
+    dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 
     db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
     if err != nil {
