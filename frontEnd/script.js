@@ -3,6 +3,7 @@ function makeJson(requestdata) {
     const requestObj = {
         "heading": requestdata.get('heading'),
         "about": requestdata.get('about'),
+        "city": requestdata.get('city'),
         "capacity": Number(requestdata.get('capacity')),
         "price": Number(requestdata.get('price'))
     }

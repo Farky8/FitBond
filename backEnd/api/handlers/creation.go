@@ -11,6 +11,7 @@ import (
 func (ts *Trainings) HandlePostTraining(w http.ResponseWriter, r *http.Request) {
 
     if r.Method == http.MethodOptions {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
         w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
         w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
         w.WriteHeader(http.StatusOK)

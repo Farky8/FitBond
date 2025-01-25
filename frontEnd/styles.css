@@ -71,7 +71,7 @@ textarea[id="about"] {
 
 }
 
-input[id="capacity"], input[id="price"] {
+input[id="capacity"], input[id="price"], input[id="city"] {
     display: inline-block;
     margin: 20px 60px;
     width: 80px;

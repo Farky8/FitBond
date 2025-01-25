@@ -12,6 +12,7 @@ type EventInfo struct {
     ID	     int	`gorm:"primaryKey" json:"id"`
     Heading  string	`json:"heading"`
     About    string	`json:"about"`
+    City     string	`json:"city"`
     Applied  int	`json:"applied"`
     Capacity int	`json:"capacity"`
     Price    int	`json:"price"`
