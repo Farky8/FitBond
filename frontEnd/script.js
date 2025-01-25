@@ -26,7 +26,7 @@ async function sendJson(requestJson) {
         if (response.status === 201) {
             return 'Training successfully POSTED!';
         } else {
-            return response.text();
+            return 'Error (code:' + response.status + '): ' + response.text();
         }
     } catch {
         return 'Could not reach the server, try again later.'
