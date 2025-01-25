@@ -12,7 +12,7 @@ function makeJson(requestdata) {
 }
 
 async function sendJson(requestJson) {
-    const apiUrl = "https://fit-bond-586541250183.europe-central2.run.app:8080/home/create" // TODOO after gcp
+    const apiUrl = "https://fit-bond-586541250183.europe-central2.run.app/home/create" // TODOO after gcp
     try {
         const response = await fetch(apiUrl, {
             method: "POST",
