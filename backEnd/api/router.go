@@ -15,7 +15,7 @@ func SetRouter(ts *handlers.Trainings) http.Handler {
     //router.HandleFunc("POST /home/search/{id}", func(w http.ResponseWriter, r *http.Request) { ts.HandleGetTraining(w, r) })
 
     c := cors.New(cors.Options{
-	AllowedOrigins: []string{"http://localhost:8081"},
+	AllowedOrigins: []string{"https://fit-bond.com", "https://fit-bond-front-end-586541250183.europe-central2.run.app"},
 	AllowedMethods: []string{"GET", "POST"},
 	AllowedHeaders: []string{"Content-Type", "Authorization"},
 	AllowCredentials: true,
