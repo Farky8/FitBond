@@ -40,6 +40,8 @@ func DBSetUp() *gorm.DB {
 	log.Fatalf("Failed to connect to database: %v", err)
     }
 
+    log.Println("Connected to database successfully")
+
     if err := db.AutoMigrate(&EventInfo{}); err != nil {
 	log.Fatalf("Failed to migrate database: %v", err)
     }
