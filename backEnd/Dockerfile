@@ -1,5 +1,6 @@
 
-FROM golang AS build
+#FROM golang AS build
+FROM golang
 
 WORKDIR /app
 
@@ -9,14 +10,15 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o api ./cmd/main/main.go
+#RUN go build -o api ./cmd/main/main.go
 
-FROM alpine:latest
+#FROM alpine:latest
 
-WORKDIR /root/
+#WORKDIR /root/
 
-COPY --from=build /app/api .
+#COPY --from=build /app/api .
 
 EXPOSE 8080
 
-CMD ["./app/api"]
+CMD ["go", "run", "./cmd/main/main.go"]
+#CMD ["./api"]

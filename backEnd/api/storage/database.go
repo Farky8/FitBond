@@ -26,13 +26,13 @@ func DBSetUp() *gorm.DB {
     user:= os.Getenv("DB_USER")
     password := os.Getenv("DB_PASSWORD")
     dbname := os.Getenv("DB_NAME")
-    connName := os.Getenv("DB_CONN_NAME")
+    host := os.Getenv("DB_HOST")
 
-    if connName == "" || user == "" || password == "" || dbname == "" {
+    if host == "" || user == "" || password == "" || dbname == "" {
         log.Fatal("missing required environment variables")
     }
 
-    dsn := fmt.Sprintf("host=/cloudsql/%s user=%s password=%s dbname=%s sslmode=disable", connName, user, password, dbname)
+    dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", host, user, password, dbname)
 
     db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
     if err != nil {
