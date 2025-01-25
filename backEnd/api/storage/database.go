@@ -6,7 +6,6 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"os"
-	"github.com/joho/godotenv"
 )
 
 type EventInfo struct {
@@ -19,10 +18,6 @@ type EventInfo struct {
 }
 
 func DBSetUp() *gorm.DB {
-    if err := godotenv.Load(); err != nil {
-	log.Fatalf("Error loading .env file: %v", err)
-    }
-
     user:= os.Getenv("DB_USER")
     password := os.Getenv("DB_PASSWORD")
     dbname := os.Getenv("DB_NAME")
