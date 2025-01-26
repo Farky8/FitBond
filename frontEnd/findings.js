@@ -27,7 +27,7 @@ function showEvents(data) {
 
             div.onclick = () => {
                 localStorage.setItem('event-id', finding.id.toString())
-                window.location.href = `https://fit-bond.com/events`
+                window.location.href = `events.html`
             }
 
             container.appendChild(div)
