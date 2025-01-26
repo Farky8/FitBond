@@ -9,17 +9,6 @@ import (
 )
 
 func (ts *Trainings) HandlePostTraining(w http.ResponseWriter, r *http.Request) {
-    /*
-    w.Header().Set("Access-Control-Allow-Origin", "https://fit-bond.com")
-    w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
-    w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
-
-    if r.Method == http.MethodOptions {
-        w.WriteHeader(http.StatusOK)
-        return
-    }
-    */
-
     var newEvent storage.EventInfo
     decode := json.NewDecoder(r.Body)
 

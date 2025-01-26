@@ -33,7 +33,7 @@ function showEvents(data) {
             container.appendChild(div)
         })
         document.getElementById('prev').disabled = currentPage === 1
-        document.getElementById('next').disabled = data.last
+        document.getElementById('next').disabled = data.length === itemsPerPage
     }
 
 }
