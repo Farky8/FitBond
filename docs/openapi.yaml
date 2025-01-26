@@ -89,9 +89,6 @@ paths:
                           type: integer
                         price:
                           type: integer
-                  last:
-                    type: boolean
-                    description: if there are more records to ask for
         '400':
           description: Invalid query parameters.
         '500':
