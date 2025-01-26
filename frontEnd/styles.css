@@ -120,3 +120,19 @@ input[id="find_city"] {
     border-radius: 20px;
 
 }
+
+div[id="findings-container"] {
+    color: #e5f4f4;
+}
+
+button[id="prev"], button[id="next"]{
+    display: inline;
+    background-color: #e5f4f4;
+    color: #333333;
+    background-color: #333333;
+    color: #e5f4f4;
+    border: 5px solid #36b2c3;
+
+    padding: 5px 10px;
+    margin: auto 20px;
+}

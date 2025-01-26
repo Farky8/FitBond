@@ -15,14 +15,37 @@ function showEvents(data) {
         newElement.innerText = 'Failed to load events, try again later'
 
         container.appendChild(newElement)
+    } else {
+        data.results.forEach(finding => {
+            const div = document.createElement('div');
+            div.classList.add('found-event')
+            div.innerHTML = `
+                <h3>${finding.heading}</h3>
+                <p>Capacity: ${finding.applied}/${finding.capacity}</p>
+                <p>Price: ${finding.price}</p>
+            `
+
+            div.onclick = () => {
+                localStorage.setItem('event-id', finding.id.toString())
+                window.location.href = `https://fit-bond.com/events`
+            }
+
+            container.appendChild(div)
+        })
+        document.getElementById('prev').disabled = currentPage === 1
+        document.getElementById('next').disabled = data.last
     }
 
+}
+
+function changePage(direction) {
+    currentPage += direction
 }
 
 async function getData(url) {
     try {
         const response = await fetch(url)
-        const data = response.json()
+        const data = await response.json()
         if (response.status === 200) {
             return data
         }
@@ -38,15 +61,15 @@ async function loadContainer() {
     container.innerHTML = ''
 
     const start = (currentPage - 1) * itemsPerPage
-    const baseUrl = "https://fit-bond.com"
+    const baseUrl = "https://fit-bond.com/home/search"
     const params = {
         city: localStorage.getItem('queryCity'),
         start: start,
         length: itemsPerPage
     }
 
-    const queryString = URLSearchParams(params).toString()
-    const url = "{baseUrl}?{queryString}"
+    const queryString = new URLSearchParams(params).toString()
+    const url = `${baseUrl}/?${queryString}`
 
     showEvents(await getData(url))
 }

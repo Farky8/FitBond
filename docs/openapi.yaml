@@ -79,7 +79,7 @@ paths:
                       properties:
                         id:
                           type: integer
-                        name:
+                        heading:
                           type: string
                         city:
                           type: string
