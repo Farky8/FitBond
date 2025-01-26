@@ -69,7 +69,7 @@ async function loadContainer() {
     }
 
     const queryString = new URLSearchParams(params).toString()
-    const url = `${baseUrl}/?${queryString}`
+    const url = `${baseUrl}?${queryString}`
 
     showEvents(await getData(url))
 }
