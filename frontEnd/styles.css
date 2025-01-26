@@ -138,9 +138,12 @@ button[id="prev"], button[id="next"]{
 }
 
 .found-event {
-    display: inline;
+    display: block;
+    margin: 50px 420px;
+    padding: 5px 20px;
+    background: 2px solid #36b2c3;
     background-color: #e5f4f4;
-    border: 5px solid #36b2c3;
+    border-color: #36b2c3;
     border-radius: 10px;
     color: #333333;
 }
