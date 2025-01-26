@@ -61,7 +61,7 @@ async function loadContainer() {
     container.innerHTML = ''
 
     const start = (currentPage - 1) * itemsPerPage
-    const baseUrl = "https://fit-bond.com/home/search"
+    const baseUrl = "https://fit-bond-586541250183.europe-central2.run.app/home/search"
     const params = {
         city: localStorage.getItem('queryCity'),
         start: start,
