@@ -45,24 +45,22 @@ paths:
       parameters:
         - name: city
           in: query
-          description: Filter results by city.
           required: true
+          description: City of wanted events
           schema:
             type: string
-        - name: page
+        - name: start
           in: query
-          description: The page number for pagination.
-          required: false
+          required: true
+          description: Index of the event in database
           schema:
             type: integer
-            default: 1
-        - name: limit
+        - name: length
           in: query
-          description: The number of items per page.
-          required: false
+          required: true
+          description: Length of the responding list of events
           schema:
             type: integer
-            default: 10
       responses:
         '200':
           description: A list of findings.
@@ -71,6 +69,9 @@ paths:
               schema:
                 type: object
                 properties:
+                  lenght:
+                    type: integer
+                    description: length of the responding events
                   results:
                     type: array
                     items:
@@ -82,12 +83,15 @@ paths:
                           type: string
                         city:
                           type: string
-                  page:
-                    type: integer
-                  limit:
-                    type: integer
-                  total:
-                    type: integer
+                        applied:
+                          type: integer
+                        capacity:
+                          type: integer
+                        price:
+                          type: integer
+                  last:
+                    type: boolean
+                    description: if there are more records to ask for
         '400':
           description: Invalid query parameters.
         '500':
@@ -128,5 +132,4 @@ paths:
           description: Finding not found.
         '500':
           description: Server error.
-
 

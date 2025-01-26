@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    margin: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
     font-size: 32px;
     background-color: #333333;
@@ -90,5 +90,33 @@ button[id="submit"] {
 
     background-color: #e5f4f4;
     color: #333333;
-    
+}
+
+.home-button {
+    display: inline;
+
+    text-decoration: none;
+    color: #333333;
+    background-color: #e5f4f4;
+
+    border: 2px solid #36b2c3;
+    border-radius: 10px;
+    border-width: 10px;
+
+    padding: 50px auto;
+    margin-top: 20px;
+}
+
+input[id="find_city"] {
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+.first-finding {
+    max-width: 100px;
+    margin: auto auto;
+    border: 2px solid #36b2c3;
+    border-width: 15px;
+    border-radius: 20px;
+
 }
