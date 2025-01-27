@@ -129,4 +129,40 @@ paths:
           description: Finding not found.
         '500':
           description: Server error.
+    put:
+      summary: Apply for training
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the finding to apply for.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Updated details of the training.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  heading:
+                    type: string
+                  text:
+                    type: string
+                  applied:
+                    type: integer
+                  capacity:
+                    type: integer
+                  price:
+                    type: number
+                    format: float
+        '404':
+          description: Finding not found.
+        '405':
+          description: Application has been refused.
+        '500':
+          description: Server error.
 

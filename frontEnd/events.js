@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const queryCity = localStorage.getItem('event-id')
-    fillPage(id)
+    fillPage('GET')
 })
 
-function showsvent(data) {
+function showEvent(data) {
     if (data === null) {
         const newElement = document.createElement("h2")
         newElement.innerText = 'Failed to load event, try again later'
@@ -21,11 +20,12 @@ function showsvent(data) {
 
         const price = document.getElementById("event-price")
         price.innerText = data.price.toString() + 'kc'
+
+        const button = document.getElementById("apply-button")
+        button.onclick = () => apply()
     }
 
 }
-
-
 
 async function getData(url) {
     try {
@@ -42,10 +42,35 @@ async function getData(url) {
     }
 }
 
+async function putData(url) {
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+        })
+        const data = await response.json()
+        if (response.status === 200) {
+            return data
+        }
+        console.log('Received code=' + response.status + ' from fit-bond api')
+        return null
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
 
 
-async function fillPage(id) {
+async function fillPage(method) {
+    const id = localStorage.getItem('event-id')
     const url = "https://fit-bond-586541250183.europe-central2.run.app/home/search/" + id
 
-    showEvent(await getData(url))
+    if (method === 'GET') {
+        showEvent(await getData(url))
+    } else {
+        showEvent(await putData(url))
+    }
+}
+
+async function apply() {
+    fillPage('PUT')
 }
