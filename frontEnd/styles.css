@@ -147,3 +147,27 @@ button[id="prev"], button[id="next"]{
     border-radius: 10px;
     color: #333333;
 }
+
+h4[id="pageNum"] {
+    display: inline;
+    color:#e5f4f4;
+    border: 5px solid #36b2c3;
+    background-color: #333333;
+}
+
+.event-info {
+    margin: 40px 200px;
+    color: #e5f4f4;
+    border: 5px solid #36b2c3;
+    padding: auto;
+
+}
+
+button[id="apply-button"] {
+    margin-bottom: 50px;
+    padding: 20px 40px;
+    background-color: #333333;
+    color: #e5f4f4;
+    border: 3px solid #36b2c3;
+    font-size: 30px;
+}

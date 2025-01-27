@@ -33,6 +33,8 @@ function showEvents(data) {
             container.appendChild(div)
         })
         document.getElementById('prev').disabled = currentPage === 1
+        const pageNum = document.getElementById("pageNum")
+        pageNum.innerText = currentPage
         document.getElementById('next').disabled = data.length !== itemsPerPage
     }
 
@@ -40,6 +42,7 @@ function showEvents(data) {
 
 function changePage(direction) {
     currentPage += direction
+    loadContainer()
 }
 
 async function getData(url) {
