@@ -6,13 +6,15 @@ import (
     "strconv"
     "encoding/json"
 
-    "github.com/gorilla/mux"
+    //"github.com/gorilla/mux"
     "github.com/Farky8/FitBond/backEnd/api/storage"
 )
 
 func (ts *Trainings) HandleGetTraining(w http.ResponseWriter, r *http.Request) {
-    vars := mux.Vars(r)
-    idStr := vars["id"]
+    //vars := mux.Vars(r)
+    //idStr := vars["id"]
+    idStr := r.PathValue("id")
+
 
     if idStr == "" {
 	http.Error(w, "Required query parameter is missing", http.StatusBadRequest)
