@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: Fit-Bond API
+  description: API for Fit-Bond web.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+paths:
+  /home/create:
+    post:
+      summary: "Create a new record"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                heading:
+                  type: string
+                  description: "Training name"
+                about:
+                  type: string
+                  description: "Training description"
+                capacity:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                  description: "The maximum capacity?"
+                price:
+                  type: integer
+                  minimum: 0
+                  maximum: 1000
+                  description: "The price of the training"
+      responses:
+        '201':
+          description: "Record created successfully"
+        '400':
+          description: "Invalid input data"
+  /home/search:
+    get:
+      summary: Search for training
+      description: Retrieve a list of trainings based on city given.
+      parameters:
+        - name: city
+          in: query
+          required: true
+          description: City of wanted events
+          schema:
+            type: string
+        - name: start
+          in: query
+          required: true
+          description: Index of the event in database
+          schema:
+            type: integer
+        - name: length
+          in: query
+          required: true
+          description: Length of the responding list of events
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of findings.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lenght:
+                    type: integer
+                    description: length of the responding events
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        heading:
+                          type: string
+                        city:
+                          type: string
+                        applied:
+                          type: integer
+                        capacity:
+                          type: integer
+                        price:
+                          type: integer
+        '400':
+          description: Invalid query parameters.
+        '500':
+          description: Server error.
+  /home/search/{id}:
+    get:
+      summary: Get training details
+      description: Retrieve detailed information about a specific training by ID.
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the finding to retrieve.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Details of the training.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  heading:
+                    type: string
+                  text:
+                    type: string
+                  applied:
+                    type: integer
+                  capacity:
+                    type: integer
+                  price:
+                    type: number
+                    format: float
+        '404':
+          description: Finding not found.
+        '500':
+          description: Server error.
+    put:
+      summary: Apply for training
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the finding to apply for.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Updated details of the training.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  heading:
+                    type: string
+                  text:
+                    type: string
+                  applied:
+                    type: integer
+                  capacity:
+                    type: integer
+                  price:
+                    type: number
+                    format: float
+        '404':
+          description: Finding not found.
+        '405':
+          description: Application has been refused.
+        '500':
+          description: Server error.
+

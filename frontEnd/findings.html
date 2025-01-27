@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="findings-body">
+    <div id="findings-base">
+        <a href="search.html" class="home-button">SEARCH</a>
+        <h1 id="findind-city"></h1>
+    </div>
+    <div id="findings-container">
+        <!--will be added in finding.js-->
+    </div>
+    <div class="pagination">
+        <button id="prev" onclick="changePage(-1)">Prev</button>
+        <h4 id="pageNum"></h4>
+        <button id="next" onclick="changePage(1)">Next</button>
+    </div>
+
+    <script src="findings.js"></script>
+</body>
+</html>

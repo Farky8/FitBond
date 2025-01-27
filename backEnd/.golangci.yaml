@@ -1,0 +1,47 @@
+# source: github.com/stanislav-zeman/.golangci.yaml
+
+run:
+  timeout: 3m
+  tests: false
+
+linters:
+  enable-all: true
+  disable:
+    # restrictive
+    - exhaustruct
+    - varnamelen
+    - nlreturn
+    - funlen
+    - nonamedreturns
+    - gochecknoglobals
+    - wsl
+    - nakedret
+    # deprecated
+    - execinquery
+    - gomnd
+    - exportloopref
+
+linters-settings:
+  depguard:
+    rules:
+      main:
+        list-mode: strict
+        files:
+           - $all
+        allow:
+          - $gostd
+          - github.com/Farky8/FitBond/backEnd/api/storage
+          - github.com/Farky8/FitBond/backEnd/api/handlers
+          - github.com/Farky8/FitBond/backEnd/api
+          - github.com/urfave/negroni
+          - github.com/rs/cors
+  gocyclo:
+    min-complexity: 16
+    
+output:
+  sort-results: true
+  formats:
+    - format: colored-line-number
+      path: stdout
+    - format: tab
+      path: golangci-lint.out
