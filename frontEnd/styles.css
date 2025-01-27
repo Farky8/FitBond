@@ -124,6 +124,7 @@ input[id="find_city"] {
 div[id="findings-container"] {
     color: #e5f4f4;
     margin: auto auto;
+    padding: auto auto;
 }
 
 button[id="prev"], button[id="next"]{
