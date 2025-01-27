@@ -1,25 +1,27 @@
 
 body {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
     height: 100vh;
     margin: 30px;
+
+    margin: 30px auto;
+
+    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
     font-size: 32px;
+    color:#e5f4f4;
     background-color: #333333;
-}
-
-body[id="Homepage"] {
-    display: flex;
-}
-
-body[id="creation"] {
-    text-align: center;
 }
 
 .center-content {
     text-align: center;
     color: #e5f4f4;
+    padding: auto;
+    margin: auto;
 }
 
 .center-button {
@@ -38,16 +40,24 @@ body[id="creation"] {
 
 }
 
-h1 {
-    color: #e5f4f4;
-}
-
 fieldset {
     max-width: 100px;
     margin: auto auto;
+    padding: auto auto;
+    padding-bottom: 11px;
     border: 2px solid #36b2c3;
     border-width: 15px;
     border-radius: 20px;
+}
+
+h4 {
+    padding: 5px;
+}
+
+input, textarea{
+    border-radius: 10px;
+    border-width: 10px;
+    border-color: #36b2c3;
 }
 
 input[id="heading"] {
@@ -68,20 +78,19 @@ textarea[id="about"] {
     white-space: pre-wrap;
     overflow-wrap: break-word;
     background-color: #e5f4f4;
-
 }
 
+
 input[id="capacity"], input[id="price"], input[id="city"] {
-    display: inline-block;
-    margin: 20px 60px;
-    width: 80px;
+    flex-direction: row;
+    margin: 20px 30px;
+    width: 100px;
     height: 50px;
 }
 
 button[id="submit"] {
-    display: block;
-    padding: 10px 20px;
-    margin: 20px auto;
+    display: flex;
+    margin: 20px auto 0;
     font-size: 40px;
 
     border-color: #36b2c3;
@@ -93,8 +102,7 @@ button[id="submit"] {
 }
 
 .home-button {
-    display: inline;
-
+    max-width: 300px;
     text-decoration: none;
     color: #333333;
     background-color: #e5f4f4;
@@ -103,13 +111,23 @@ button[id="submit"] {
     border-radius: 10px;
     border-width: 10px;
 
-    padding: 50px auto;
-    margin-top: 20px;
+    padding: 5px;
 }
 
-input[id="find_city"] {
-    padding: 10px 10px;
+label[id="find-city-label"] {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    height: 50px;
+}
+
+input[id="find-city"] {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 130px;
     font-size: 20px;
+    margin: auto auto;
 }
 
 .first-finding {
@@ -122,9 +140,22 @@ input[id="find_city"] {
 }
 
 div[id="findings-container"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: #e5f4f4;
-    margin: auto auto;
-    padding: auto auto;
+}
+
+.found-event {
+    display: block;
+    width: 200px;
+    max-width: 200px;
+    margin: 20px;
+    padding: 5px auto;
+    border: 10px solid #36b2c3;
+    color: #333333;
+    background-color: #e5f4f4;
 }
 
 button[id="prev"], button[id="next"]{
@@ -139,17 +170,6 @@ button[id="prev"], button[id="next"]{
     margin: auto 20px;
 }
 
-.found-event {
-    display: block;
-    margin: 50px 420px;
-    padding: 5px 20px;
-    background: 2px solid #36b2c3;
-    background-color: #e5f4f4;
-    border-color: #36b2c3;
-    border-radius: 10px;
-    color: #333333;
-}
-
 h4[id="pageNum"] {
     display: inline;
     color:#e5f4f4;
@@ -158,10 +178,19 @@ h4[id="pageNum"] {
 }
 
 .event-info {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 600px;
+    width: 300px;
     margin: 40px 200px;
-    color: #e5f4f4;
+    padding: 20px 50px;
+
+    color: #333333;
     border: 5px solid #36b2c3;
-    padding: auto;
+    background-color: #e5f4f4;
+    border-radius: 10px;
 
 }
 
@@ -172,4 +201,12 @@ button[id="apply-button"] {
     color: #e5f4f4;
     border: 3px solid #36b2c3;
     font-size: 30px;
+}
+
+.pagination {
+    margin: 30px auto;
+}
+
+body[id="findings-body"] {
+    margin: 200px auto;
 }
