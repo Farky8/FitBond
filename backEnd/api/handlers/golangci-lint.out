@@ -1,0 +1,2 @@
+search.go:17:11  typecheck  undefined: Trainings
+search.go:61:3   typecheck  undefined: log

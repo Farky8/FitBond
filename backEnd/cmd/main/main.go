@@ -1,20 +1,19 @@
 package main
 
 import (
-    "net/http"
-    "log"
-    "gorm.io/gorm"
+	"log"
+	"net/http"
 
-    "github.com/Farky8/FitBond/backEnd/api"
-    "github.com/Farky8/FitBond/backEnd/api/storage"
-    "github.com/Farky8/FitBond/backEnd/api/handlers"
+	"github.com/Farky8/FitBond/backEnd/api"
+	"github.com/Farky8/FitBond/backEnd/api/handlers"
+	"github.com/Farky8/FitBond/backEnd/api/storage"
 )
 
 func main() {
-    var trainings *gorm.DB = storage.DBSetUp()
-    
-    var router http.Handler = api.SetRouter(&handlers.Trainings{
-	DB: trainings,
-    })
-    log.Fatal(http.ListenAndServe(":8080", router))
+	trainings := storage.DBSetUp()
+
+	router := api.SetRouter(&handlers.Trainings{
+		DB: trainings,
+	})
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
